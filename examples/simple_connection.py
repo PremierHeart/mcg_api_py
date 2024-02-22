@@ -3,55 +3,8 @@
 
 import json
 import os
-import requests
 import sys
-from datetime import datetime
-
-# ----------------------------------------------------------------------
-class McgApiContext:
-    def __init__(self, token, url, debug=False):
-        self._token = token
-        self._url = url
-        self._debug = debug
-
-    # analyze endpoint. each endpoint has its own wrapper method
-    def analyze(self, request_json):
-        if self._debug:
-            print("sending AnalysisRequest JSON!")
-        return self.send('/analyze', request_json)
-
-    # returns a Dict containing the analysis results or an error
-    def send(endpoint, request_json):
-        hdr = { 'Authorization': self._token,
-                'Content-Type': 'application/json' }
-        resp = requests.post(url=self._url + endpoint, headers=hdr, json=data)
-        if resp.status_code != 200:
-            return {
-                    "object-type": "http-error",
-                    "timestamp": str(datetime.now),
-                    "message": "Unknown error: HTTP %d" % resp.status_code
-            }
-        return json.loads(resp.text)
-
-        
-
-# ----------------------------------------------------------------------
-class McgApiConnection:
-    DefaultUrl='httpa://api.premierheart.com/api/v1'
-    def __init__(self, token, url=DefaultUrl, debug=False):
-        self._ctx = McgApiContext(token, url, debug)
-        self._debug = debug
-
-    def __enter__(self):
-        if self._debug:
-            print("Connecting to API Server")
-        return self.ctx
-
-    def __exit__(self, exc_type, exc_value, exc_tb):
-        if self._debug:
-            print("Disconnecting from API Server")
-        # API is stateless: No need to disconnect
-        pass
+from mcg_api import McgApiConnection
 
 # ----------------------------------------------------------------------
 # MAIN
