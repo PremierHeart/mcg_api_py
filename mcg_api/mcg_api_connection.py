@@ -4,7 +4,7 @@
 import os
 import sys
 
-
+from .mcg_context import McgApiContext
 
 # ----------------------------------------------------------------------
 # A simple wrapper for McgApiContext that allows "with" usage:
@@ -19,7 +19,7 @@ class McgApiConnection:
     def __enter__(self):
         if self._debug:
             print("Connecting to API Server")
-        return self.ctx
+        return self._ctx
 
     def __exit__(self, exc_type, exc_value, exc_tb):
         if self._debug:

@@ -23,10 +23,10 @@ class McgApiContext:
         return self.send('/analyze', request_json)
 
     # returns a Dict containing the analysis results or an error
-    def send(endpoint, request_json):
+    def send(self, endpoint, request_json):
         hdr = { 'Authorization': self._token,
                 'Content-Type': 'application/json' }
-        resp = requests.post(url=self._url + endpoint, headers=hdr, json=data)
+        resp = requests.post(url=self._url + endpoint, headers=hdr, json=request_json)
         if resp.status_code != 200:
             return {
                     "object-type": "http-error",
