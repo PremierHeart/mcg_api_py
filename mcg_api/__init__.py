@@ -1,4 +1,7 @@
 
 __version__ = "0.1.0"
-__author__ = 'Stephen Hudson'
-__credits__ = 'Argonne National Laboratory'
+__author__ = ''
+__credits__ = ''
+
+from .mcg_api_connection import McgApiConnection
+from .mcg_context import McgApiContext
