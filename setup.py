@@ -10,7 +10,7 @@ setup(
     license='Apache',
     packages=['mcg_api'],
     install_requires=['requests'],
-   classifiers=[
+    classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',  

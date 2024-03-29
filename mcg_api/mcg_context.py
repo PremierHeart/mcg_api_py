@@ -8,6 +8,8 @@ import sys
 from datetime import datetime
 
 # ----------------------------------------------------------------------
+# A connection to the MCG API server using a specific token.
+# This is the object used inside an McgApiConnection block.
 class McgApiContext:
     def __init__(self, token, url, debug=False):
         self._token = token

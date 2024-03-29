@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 # (c) Copyright 2024 Premier Heart, LLC
 
-import json
 import os
-import requests
 import sys
-from datetime import datetime
 
 
 
 # ----------------------------------------------------------------------
+# A simple wrapper for McgApiContext that allows "with" usage:
+#    with McgApiConnection(token) as conn:
+#        result_dict = conn.analyze(json_request) 
 class McgApiConnection:
     DefaultUrl='httpa://api.premierheart.com/api/v1'
     def __init__(self, token, url=DefaultUrl, debug=False):
